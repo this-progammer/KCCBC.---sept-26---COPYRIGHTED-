@@ -52,6 +52,7 @@ struct kccbc {
   /*command*/
   const char* pwd;
   const char* cd;
+  const char* pkgmang;
   char directory[1024];
   char link[2048];
   int line;
@@ -95,8 +96,15 @@ void userdo_command_cd( struct kccbc* k, const char* nexdir ) {
 }
 
 /*userdo_command_pkgmang()*/
-void userdo_command_pkgmang( struct kccbc* k ) {
-
+void userdo_command_pkgmang( struct kccbc* k, const char* pacweb ) {
+     struct kccbc* console = k;
+     int udo = 8988;
+     char buf[1024];
+          for( int i = k->sp; i < udo; i++ ) {
+               k->link[buf[i]] = (char*)pacweb;
+               char* l = k->link[buf[i]];
+               userdo_command_cd( k, (const char*)l );
+          }
 }
 
 /*main()*/
