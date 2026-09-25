@@ -5,6 +5,8 @@
   - @Copyrighted.
 */
 
+#include <stdio.c>
+
 #define KCCBC 1
 
 struct kccbc {
@@ -47,6 +49,9 @@ struct kccbc {
   void* mov;
   /*resb*/
   int resb;
+  /*command*/
+  const char* pwd;
+  char directory[1024];
 };
 
 /*execute_kccbc_command()*/
@@ -58,6 +63,18 @@ void __stdcall execute_kccbc_command( struct kccbc* k, void* EXEC ) {
        if( !movl && (!EXEC) ) {
            k->pop;
        }
+}
+
+/*kccbc_print()*/
+void kccbc_print( void* __printkcbbc ) {
+     printf("%p",__printkcbbc);
+}
+
+/*userdo_command_pwd()*/
+void userdo_command_pwd( struct kccbc* K ) {
+     if( k->pwd ) {
+         kccbc_print(&k->directory);
+     }
 }
 
 /*main()*/
