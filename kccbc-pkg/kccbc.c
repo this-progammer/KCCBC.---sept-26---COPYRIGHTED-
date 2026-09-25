@@ -57,6 +57,7 @@ struct kccbc {
   char link[2048];
   int line;
   struct __open_network* network;
+  double ip;
 };
 
 /*execute_kccbc_command()*/
@@ -104,8 +105,7 @@ void userdo_command_pkgmang( struct kccbc* k, const char* pacweb ) {
           for( int i = k->sp; i < udo; i++ ) {
                k->link[buf[i]] = (char*)pacweb;
                char* l = console->link[buf[i]];
-               userdo_command_cd( k, (const char*)l );
-               *l++;
+               userdo_command_cd( console, (const char*)l );
                *l;
                console->push;
                   if( !console->network ) {
@@ -114,6 +114,13 @@ void userdo_command_pkgmang( struct kccbc* k, const char* pacweb ) {
                   }
           }
 }
+
+/*userdo_command_pip()*/
+void userdo_command_pip( struct kccbc* k ) { 
+     kccbc_print(&k->ip);
+     kccbc_do_new_line( k );
+}
+
 
 /*main()*/
 int main() { 
