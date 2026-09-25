@@ -50,7 +50,15 @@ struct kccbc {
 };
 
 /*execute_kccbc_command()*/
-void __stdcall execute_kccbc_command( void* EXEC );
+void __stdcall execute_kccbc_command( struct kccbc* k, void* EXEC ) {
+     void* movl = k->mov;
+     movl, (&EXEC);
+     k->sp;
+     k->push;
+       if( !movl && (!EXEC) ) {
+           k->pop;
+       }
+}
 
 /*main()*/
 int main() { 
