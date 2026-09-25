@@ -53,6 +53,7 @@ struct kccbc {
   const char* pwd;
   const char* cd;
   char directory[1024];
+  char link[2048];
   int line;
 };
 
@@ -91,6 +92,11 @@ void userdo_command_cd( struct kccbc* k, const char* nexdir ) {
      console->directory = (char*)nexdir;
      userdo_command_pwd( console );
      kccbc_do_new_line( console );
+}
+
+/*userdo_command_pkgmang()*/
+void userdo_command_pkgmang( struct kccbc* k ) {
+
 }
 
 /*main()*/
