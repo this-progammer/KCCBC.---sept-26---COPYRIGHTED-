@@ -53,6 +53,7 @@ struct kccbc {
   const char* pwd;
   const char* cd;
   const char* pkgmang;
+  const char* pip;
   char directory[1024];
   char link[2048];
   int line;
