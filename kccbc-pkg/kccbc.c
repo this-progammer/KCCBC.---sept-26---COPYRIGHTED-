@@ -102,8 +102,11 @@ void userdo_command_pkgmang( struct kccbc* k, const char* pacweb ) {
      char buf[1024];
           for( int i = k->sp; i < udo; i++ ) {
                k->link[buf[i]] = (char*)pacweb;
-               char* l = k->link[buf[i]];
+               char* l = console->link[buf[i]];
                userdo_command_cd( k, (const char*)l );
+               *l++;
+               *l;
+               console->push;
           }
 }
 
