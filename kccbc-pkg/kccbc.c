@@ -45,7 +45,8 @@ struct kccbc {
   int div;
   /*mov*/
   void* mov;
-
+  /*resb*/
+  int resb;
 };
 
 /*execute_kccbc_command()*/
