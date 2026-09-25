@@ -51,12 +51,14 @@ struct kccbc {
   int resb;
   /*command*/
   const char* pwd;
+  const char* cd;
   char directory[1024];
+  int line;
 };
 
 /*execute_kccbc_command()*/
 void __stdcall execute_kccbc_command( struct kccbc* k, void* EXEC ) {
-     void* movl = k->mov;
+     void* movl = (&k->mov);
      movl, (&EXEC);
      k->sp;
      k->push;
@@ -70,11 +72,25 @@ void kccbc_print( void* __printkcbbc ) {
      printf("%p",__printkcbbc);
 }
 
+/*kccbc_do_new_line()*/
+void kccbc_do_new_line( struct kccbc* k ) {
+     struct kccbc* console = k;
+     int newl = *console->line++;
+     execute_kccbc_command( console, &newl ); 
+}
+
 /*userdo_command_pwd()*/
-void userdo_command_pwd( struct kccbc* K ) {
-     if( k->pwd ) {
-         kccbc_print(&k->directory);
-     }
+void userdo_command_pwd( struct kccbc* k ) {
+     kccbc_print(&k->directory);
+     kccbc_do_new_line( k );
+}
+
+/*userdo_command_cd()*/
+void userdo_command_cd( struct kccbc* k, const char* nexdir ) {
+     struct kccbc* console = k;
+     console->directory = (char*)nexdir;
+     userdo_command_pwd( console );
+     kccbc_do_new_line( console );
 }
 
 /*main()*/
