@@ -56,6 +56,7 @@ struct kccbc {
   char directory[1024];
   char link[2048];
   int line;
+  struct __o_network* network;
 };
 
 /*execute_kccbc_command()*/
@@ -107,6 +108,10 @@ void userdo_command_pkgmang( struct kccbc* k, const char* pacweb ) {
                *l++;
                *l;
                console->push;
+                  if( !console->network ) {
+                      console->pop;
+                      printf("Console <pkgmang> Failed To Retrieve Packages To Download, Network Issue.\n")
+                  }
           }
 }
 
