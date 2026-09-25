@@ -5,7 +5,7 @@
   - @Copyrighted.
 */
 
-#include <stdio.c>
+#include <stdio.h>
 
 #define KCCBC 1
 
