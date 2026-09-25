@@ -56,7 +56,7 @@ struct kccbc {
   char directory[1024];
   char link[2048];
   int line;
-  struct __o_network* network;
+  struct __open_network* network;
 };
 
 /*execute_kccbc_command()*/
